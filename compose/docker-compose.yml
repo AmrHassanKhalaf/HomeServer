@@ -20,6 +20,33 @@ services:
     networks:
       - home-network
 
+  redis:
+    image: redis:8-alpine
+    container_name: redis
+    restart: unless-stopped
+
+    ports:
+      - "6379:6379"
+
+    volumes:
+      - redis_data:/data
+
+    networks:
+      - home-network
+
+  fastapi:
+    build:
+      context: ../docker/fastapi
+
+    container_name: fastapi
+
+    restart: unless-stopped
+
+    ports:
+      - "8001:8000"
+
+    networks:
+      - home-network
 
 networks:
   home-network:
@@ -27,3 +54,4 @@ networks:
 
 volumes:
   mariadb_data:
+  redis_data:
