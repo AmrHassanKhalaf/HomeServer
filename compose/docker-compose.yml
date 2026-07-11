@@ -1,0 +1,29 @@
+services:
+
+  mariadb:
+    image: mariadb:11.8
+    container_name: mariadb
+    restart: unless-stopped
+
+    environment:
+      MARIADB_ROOT_PASSWORD: root123
+      MARIADB_DATABASE: portfolio_api
+      MARIADB_USER: portfolio
+      MARIADB_PASSWORD: Aa##1234
+
+    ports:
+      - "3307:3306"
+
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+    networks:
+      - home-network
+
+
+networks:
+  home-network:
+
+
+volumes:
+  mariadb_data:
