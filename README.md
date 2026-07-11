@@ -1,8 +1,8 @@
-# Home Server Platform
+# 🚀 Home Server Platform
 
-Built from scratch by Amr Hassan.
+Production-ready self-hosted platform built from scratch.
 
-## Status
+## Tech Stack
 
 - Ubuntu Server
 - Nginx
@@ -11,3 +11,17 @@ Built from scratch by Amr Hassan.
 - FastAPI
 - MariaDB
 - Docker
+- Docker Compose
+
+## Status
+
+- [x] Ubuntu Server
+- [x] Nginx
+- [x] Laravel
+- [x] React
+- [x] FastAPI
+- [x] MariaDB
+- [x] Docker
+- [ ] Docker Compose
+- [ ] Redis
+- [ ] Monitoring
