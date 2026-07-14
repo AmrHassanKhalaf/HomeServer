@@ -1,0 +1,71 @@
+# ==========================
+# OS
+# ==========================
+.DS_Store
+Thumbs.db
+
+# ==========================
+# Editor
+# ==========================
+.vscode/
+.history/
+*.swp
+*.swo
+
+# ==========================
+# Environment
+# ==========================
+.env
+.env.*
+!*.env.example
+!compose/.env.example
+
+# ==========================
+# Logs
+# ==========================
+*.log
+logs/
+
+# ==========================
+# Python
+# ==========================
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ==========================
+# Node
+# ==========================
+node_modules/
+
+# ==========================
+# Laravel
+# ==========================
+vendor/
+bootstrap/cache/
+storage/logs/
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+
+# ==========================
+# Docker
+# ==========================
+docker-compose.override.yml
+
+# ==========================
+# Backups
+# ==========================
+backups/**
+
+!backups/
+!backups/database/
+!backups/configs/
+!backups/volumes/
+!backups/logs/
+
+!backups/database/.gitkeep
+!backups/configs/.gitkeep
+!backups/volumes/.gitkeep
+!backups/logs/.gitkeep

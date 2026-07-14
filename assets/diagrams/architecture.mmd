@@ -1,0 +1,36 @@
+flowchart TD
+
+    Internet((Internet))
+    Tunnel[Cloudflare Tunnel]
+    Nginx[Nginx Reverse Proxy]
+
+    React[React Frontend]
+    Laravel[Laravel API]
+    FastAPI[FastAPI AI Service]
+
+    MariaDB[(MariaDB)]
+    Redis[(Redis)]
+
+    NodeExporter[Node Exporter]
+    cAdvisor[cAdvisor]
+    Prometheus[Prometheus]
+    Grafana[Grafana]
+
+    Portainer[Portainer]
+    Kuma[Uptime Kuma]
+
+    Internet --> Tunnel
+    Tunnel --> Nginx
+
+    Nginx --> React
+    Nginx --> Laravel
+    Nginx --> FastAPI
+
+    Laravel --> MariaDB
+    Laravel --> Redis
+
+    NodeExporter --> Prometheus
+    cAdvisor --> Prometheus
+    Prometheus --> Grafana
+
+    Kuma --> Nginx
