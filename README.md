@@ -3,155 +3,255 @@
 </p>
 
 <p align="center">
-  <img src="assets/logo/logo.png" width="140" alt="HomeServer Logo">
+  <img src="assets/logo/logo.png" width="180" alt="HomeServer Logo">
 </p>
 
 <h1 align="center">🏠 HomeServer</h1>
 
 <p align="center">
-<b>Build • Deploy • Monitor • Automate</b>
+  <strong>Learn • Build • Deploy • Monitor</strong>
 </p>
 
 <p align="center">
-Production-ready self-hosted infrastructure platform powered by Docker, Cloudflare Tunnel and modern DevOps practices.
+  An open-source blueprint for building your own modern self-hosted server using Docker, Cloudflare Tunnel and production-ready DevOps practices.
 </p>
 
 <p align="center">
 
-![Version](https://img.shields.io/badge/version-v1.0.0-blue)
+![License](https://img.shields.io/github/license/AmrHassanKhalaf/HomeServer)
 
-![Ubuntu](https://img.shields.io/badge/Ubuntu-24.04-E95420?logo=ubuntu&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Latest-2496ED?logo=docker&logoColor=white)
 
-![Docker](https://img.shields.io/badge/Docker-29.x-2496ED?logo=docker&logoColor=white)
+![Ubuntu](https://img.shields.io/badge/Tested-Ubuntu%2026.04-E95420?logo=ubuntu&logoColor=white)
 
-![Cloudflare](https://img.shields.io/badge/Cloudflare-Tunnel-F38020?logo=cloudflare&logoColor=white)
-
-![License](https://img.shields.io/badge/license-MIT-success)
-
-![Status](https://img.shields.io/badge/status-Stable-success)
+![Cloudflare Tunnel](https://img.shields.io/badge/Cloudflare-Tunnel-F38020?logo=cloudflare&logoColor=white)
 
 </p>
 
 ---
 
-# 🚀 HomeServer
+# 🚀 What is HomeServer?
 
-HomeServer is a production-ready self-hosted infrastructure platform that allows developers to deploy, manage and monitor modern applications from a single Ubuntu server.
+HomeServer is an open-source project that documents the complete journey of building a modern self-hosted server from scratch.
 
-The project combines modern DevOps tools into one unified platform including Docker, Cloudflare Tunnel, Nginx, Laravel, React, FastAPI, Prometheus, Grafana, Portainer and automated backup scripts.
+Rather than providing only source code, this repository explains every decision, configuration and deployment step required to create a reliable development server running on your own hardware.
 
-The primary goal of HomeServer is to provide a secure, scalable and developer-friendly self-hosted environment without exposing your home network through port forwarding.
+By following the documentation, you will learn how to build an infrastructure that includes:
+
+- 🌐 Nginx Reverse Proxy
+- ⚛️ React Frontend
+- 🚀 Laravel Backend
+- 🤖 FastAPI AI Service
+- 🗄️ MariaDB
+- ⚡ Redis
+- 📊 Prometheus
+- 📈 Grafana
+- ❤️ Uptime Kuma
+- 🐳 Portainer
+- ☁️ Cloudflare Tunnel
+
+Whether you are learning self-hosting, building a personal lab, creating a development environment, or hosting your own applications, HomeServer provides a practical roadmap based on a real project built step by step—not just a collection of configuration files.
+
+---
+
+# 🎯 Project Goals
+
+- Build a complete self-hosted development server.
+- Learn modern DevOps technologies through real implementation.
+- Deploy applications using Docker Compose.
+- Secure services without opening router ports.
+- Monitor the entire infrastructure.
+- Document every step to make the project easy to reproduce.
+
+---
+
+# ⚡ Quick Start
+
+> **Already have Ubuntu Server, Docker and Git installed?**
+>
+> You can start HomeServer in just a few minutes.
+
+```bash
+git clone https://github.com/AmrHassanKhalaf/HomeServer.git
+
+cd HomeServer
+
+cp compose/.env.example compose/.env
+
+nano compose/.env
+
+cd compose
+
+docker compose up -d
+```
+
+After the containers start, open your browser:
+
+```
+http://SERVER_IP
+```
+
+Your HomeServer is now running.
+
+If this is your first self-hosted server, follow the complete **Getting Started** guide before continuing.
+---
+
+# 📚 Documentation
+
+The documentation is designed for two types of users:
+
+### 👨‍💻 I want to build my own Home Server
+
+Follow the **Getting Started** guides from beginning to end.
+
+```
+docs/
+└── getting-started/
+```
+
+---
+
+### 🛠 I want to understand how everything works
+
+Read the technical guides.
+
+```
+docs/
+├── guides/
+└── reference/
+```
+
+---
+
+### 📖 Documentation Structure
+
+| Section | Description |
+|---------|-------------|
+| Getting Started | Build HomeServer from scratch |
+| Guides | Learn every service in detail |
+| Reference | Architecture and configuration |
+| Troubleshooting | Solve common problems |
 
 ---
 
 # ✨ Features
 
-- 🐳 Docker Compose Infrastructure
-- ☁️ Cloudflare Tunnel Integration
+- 🐳 Docker Compose infrastructure
 - 🌐 Nginx Reverse Proxy
-- ⚛ React Frontend
-- 🚀 Laravel Backend
-- 🤖 FastAPI AI Service
-- 🗄 MariaDB Database
-- ⚡ Redis Cache
-- 📊 Grafana Dashboards
-- 📈 Prometheus Monitoring
-- ❤️ Uptime Kuma Monitoring
-- 📦 Portainer Management
-- 💾 Automated Backup Scripts
-- 🔒 Secure Remote Development
-- 💻 VS Code Remote SSH
-- 📁 Organized Infrastructure Repository
+- ☁️ Cloudflare Tunnel integration
+- ⚛️ React production frontend
+- 🚀 Laravel API
+- 🤖 FastAPI AI services
+- 🗄️ MariaDB database
+- ⚡ Redis caching
+- 📊 Grafana dashboards
+- 📈 Prometheus metrics
+- ❤️ Uptime Kuma monitoring
+- 🐳 Portainer management
+- 💾 Automated backup scripts
+- 🔒 Secure remote development
+- 📚 Complete step-by-step documentation
+- 🚀 Production-ready project structure
+
+# 🏗️ Architecture
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/diagrams/architecture-dark.png">
+    <img src="assets/diagrams/architecture-light.png" alt="HomeServer Architecture">
+  </picture>
+</p>
+
+HomeServer follows a layered architecture that separates networking, applications, data storage, monitoring and management into independent components.
+
+| Layer | Components | Purpose |
+|--------|------------|---------|
+| 🌍 Internet | Internet, Cloudflare Tunnel | Secure public access without opening router ports. |
+| 🌐 Reverse Proxy | Nginx | Routes incoming requests to the correct application. |
+| 🚀 Application | React, Laravel, FastAPI | Hosts the frontend, backend API and AI services. |
+| 💾 Data | MariaDB, Redis | Persistent storage and caching. |
+| 📊 Monitoring | Prometheus, Grafana, Node Exporter, cAdvisor | Collects infrastructure and container metrics. |
+| 🛠️ Management | Portainer, Uptime Kuma | Container management and service health monitoring. |
+
+The diagram above represents the production architecture used by the current HomeServer release.
 
 ---
 
-# 🏗 Architecture
+# 📦 Repository Structure
 
 ```text
-                        Internet
-                            │
-                            ▼
-                     Cloudflare DNS
-                            │
-                            ▼
-                   Cloudflare Tunnel
-                            │
-                            ▼
-                     Ubuntu HomeServer
-                            │
-                    Docker Compose Stack
-                            │
-      ┌─────────────────────┼─────────────────────┐
-      ▼                     ▼                     ▼
-   React                 Laravel              FastAPI
-      │                     │                     │
-      └──────────────┬──────┴─────────────────────┘
-                     ▼
-             MariaDB + Redis
-
-────────────────────────────────────────────────────────
-
-Monitoring Stack
-
-Node Exporter
-      │
-      ▼
-Prometheus
-      │
-      ▼
-Grafana
-
-────────────────────────────────────────────────────────
-
-Infrastructure
-
-Nginx
-
-Cloudflare Tunnel
-
-Portainer
-
-Uptime Kuma
-
-Backup Scripts
-```
-
----
-
-# 📦 Included Services
-
-| Service | Purpose |
-|----------|---------|
-| React | Frontend |
-| Laravel | Backend API |
-| FastAPI | AI Services |
-| MariaDB | Database |
-| Redis | Cache |
-| Nginx | Reverse Proxy |
-| Prometheus | Metrics |
-| Grafana | Dashboards |
-| Uptime Kuma | Health Monitoring |
-| Portainer | Docker Management |
-| Cloudflare Tunnel | Secure Public Access |
-
----
-
-# 📂 Repository Structure
-
-```text
-HomeServer
+HomeServer/
 │
-├── apps/
-├── assets/
-├── backups/
-├── compose/
-├── configs/
-├── docker/
-├── docs/
-├── infrastructure/
-├── monitoring/
-├── scripts/
+├── apps/                  # Applications
+├── assets/                # Logos, banners and diagrams
+├── compose/               # Docker Compose configuration
+├── docker/                # Docker and Nginx configuration
+├── docs/                  # Project documentation
+├── monitoring/            # Prometheus configuration
+├── scripts/               # Automation and backup scripts
+│
 ├── README.md
 ├── LICENSE
-└── ROADMAP.md
-```
+├── CHANGELOG.md
+├── ROADMAP.md
+├── SECURITY.md
+└── CONTRIBUTING.md
+
+---
+
+# 🐳 Included Services
+
+| Service | Role |
+|---------|------|
+| Nginx | Reverse Proxy |
+| React | Frontend Application |
+| Laravel | Backend API |
+| FastAPI | AI Services |
+| MariaDB | Relational Database |
+| Redis | Cache & Queue |
+| Prometheus | Metrics Collection |
+| Grafana | Monitoring Dashboards |
+| Node Exporter | Host Metrics |
+| cAdvisor | Container Metrics |
+| Uptime Kuma | Health Monitoring |
+| Portainer | Docker Management |
+| Cloudflare Tunnel | Secure Remote Access |
+---
+
+# 🗺️ Roadmap
+
+## ✅ Version 1.0
+
+- Docker Compose infrastructure
+- Nginx reverse proxy
+- Laravel + React + FastAPI stack
+- MariaDB & Redis
+- Monitoring with Prometheus and Grafana
+- Uptime Kuma integration
+- Cloudflare Tunnel
+- Backup scripts
+- Complete documentation
+
+## 🚀 Planned
+
+- HomeServer CLI
+- One-command installer
+- Automatic SSL management
+- Multi-environment support
+- CI/CD pipeline
+---
+
+# 🤝 Contributing
+
+Contributions are welcome.
+
+If you would like to improve HomeServer, please read the **CONTRIBUTING.md** guide before opening an Issue or Pull Request.
+
+---
+
+# 📄 License
+
+HomeServer is released under the MIT License.
+
+See the **LICENSE** file for more information.
+

@@ -27,6 +27,7 @@ Before installing HomeServer, make sure your system meets the following requirem
 - Docker Engine
 - Docker Compose Plugin
 
+  These components must be installed before continuing.
 ---
 
 ## Accounts
