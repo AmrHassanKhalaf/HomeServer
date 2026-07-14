@@ -77,7 +77,7 @@ VS Code will open the HomeServer project directly on the remote machine.
 Navigate to the project directory:
 
 ```bash
-cd ~/HomeServer
+cd HomeServer
 ```
 
 Open the project:

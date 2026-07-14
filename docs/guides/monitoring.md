@@ -17,16 +17,9 @@ Every important component continuously reports metrics that are collected by Pro
 Current monitoring stack:
 
 ```text
-Node Exporter
-       │
-       ▼
-   Prometheus
-       ▲
-       │
-    cAdvisor
-       │
-       ▼
-    Grafana
+Node Exporter ──┐
+                ├──► Prometheus ───► Grafana
+ cAdvisor ──────┘
 ```
 
 ---
@@ -37,8 +30,8 @@ Node Exporter
 |----------|---------|
 | Prometheus | Collects metrics |
 | Grafana | Dashboards and visualization |
-| Node Exporter | Host metrics |
-| cAdvisor | Docker container metrics |
+| Node Exporter | Host metrics, scraped on the internal Docker network |
+| cAdvisor | Docker container metrics, scraped on the internal Docker network |
 
 ---
 
@@ -86,27 +79,15 @@ Verify that:
 
 ---
 
-# Verify Node Exporter
+# Verify internal scrapes
 
-Open:
+Node Exporter and cAdvisor are not published on host ports in the current production compose file.
+They are reachable only on the internal Docker network unless you explicitly add a port mapping.
 
-```text
-http://localhost:9100/metrics
-```
+In Prometheus, confirm these targets are **UP**:
 
-Metrics should be displayed.
-
----
-
-# Verify cAdvisor
-
-Open:
-
-```text
-http://localhost:8080
-```
-
-Docker containers should be visible.
+- `node-exporter:9100`
+- `cadvisor:8080`
 
 ---
 

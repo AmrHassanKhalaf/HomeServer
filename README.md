@@ -80,8 +80,6 @@ cp compose/.env.example compose/.env
 
 nano compose/.env
 
-cd compose
-
 docker compose up -d
 ```
 
@@ -254,4 +252,3 @@ If you would like to improve HomeServer, please read the **CONTRIBUTING.md** gui
 HomeServer is released under the MIT License.
 
 See the **LICENSE** file for more information.
-

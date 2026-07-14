@@ -18,12 +18,6 @@ Before starting, ensure that Docker Engine and Docker Compose are installed and 
 
 # Start HomeServer
 
-Navigate to the Compose directory:
-
-```bash
-cd compose
-```
-
 Start all services:
 
 ```bash

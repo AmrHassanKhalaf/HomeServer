@@ -13,9 +13,11 @@ Whether you want to deploy HomeServer on your own hardware or learn how each com
 Start here if this is your first time using HomeServer.
 
 - [00 - Prerequisites](getting-started/00-prerequisites.md)
-- [01 - Installation](getting-started/01-installation.md)
-- [02 - First Run](getting-started/02-first-run.md)
-- [03 - Cloudflare Tunnel](getting-started/03-cloudflare-tunnel.md)
+- [01 - Install Ubuntu](getting-started/01-install-ubuntu.md)
+- [02 - Install Docker](getting-started/02-install-docker.md)
+- [03 - Clone Project](getting-started/03-clone-project.md)
+- [04 - First Start](getting-started/04-first-start.md)
+- [05 - Cloudflare Tunnel](getting-started/05-cloudflare-tunnel.md)
 
 ---
 
@@ -23,12 +25,12 @@ Start here if this is your first time using HomeServer.
 
 Learn how each part of HomeServer works.
 
-- [Networking](guides/networking.md)
-- [Monitoring](guides/monitoring.md)
+- [Add New App](guides/add-new-app.md)
 - [Backup](guides/backup.md)
-- [Security](guides/security.md)
-- [Deployment](guides/deployment.md)
+- [Monitoring](guides/monitoring.md)
+- [Nginx](guides/nginx.md)
 - [Remote Development](guides/remote-development.md)
+- [Security](guides/security.md)
 
 ---
 

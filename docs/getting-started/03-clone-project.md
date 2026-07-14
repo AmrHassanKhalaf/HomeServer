@@ -69,14 +69,21 @@ Example:
 ```env
 PROJECT_NAME=homeserver
 
-MYSQL_DATABASE=homeserver
-MYSQL_USER=homeserver
-MYSQL_PASSWORD=change_this_password
-MYSQL_ROOT_PASSWORD=change_this_root_password
+MYSQL_DATABASE=portfolio_api
+MYSQL_USER=portfolio
+MYSQL_PASSWORD=example_password
+MYSQL_ROOT_PASSWORD=example_root_password
+MYSQL_PORT=3307
 
 NGINX_PORT=80
-FASTAPI_PORT=8000
+DEV_NGINX_PORT=8080
+FASTAPI_PORT=8001
 REDIS_PORT=6379
+
+PORTAINER_PORT=9000
+PROMETHEUS_PORT=9090
+GRAFANA_PORT=3000
+UPTIME_KUMA_PORT=3002
 ```
 
 ---
@@ -86,8 +93,6 @@ REDIS_PORT=6379
 Validate the configuration before starting the stack:
 
 ```bash
-cd compose
-
 docker compose config
 ```
 

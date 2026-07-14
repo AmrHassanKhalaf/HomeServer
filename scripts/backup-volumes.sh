@@ -1,7 +1,11 @@
 #!/bin/bash
 
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 DATE=$(date +"%Y-%m-%d_%H-%M-%S")
-BACKUP_DIR="$HOME/HomeServer/backups/volumes"
+BACKUP_DIR="$REPO_ROOT/backups/volumes"
 
 mkdir -p "$BACKUP_DIR"
 

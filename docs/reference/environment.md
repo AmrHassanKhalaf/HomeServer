@@ -40,6 +40,7 @@ compose/.env.example
 | MYSQL_USER | Database user |
 | MYSQL_PASSWORD | Database password |
 | MYSQL_ROOT_PASSWORD | Root password |
+| MYSQL_PORT | Development MariaDB host port |
 
 ---
 
@@ -48,8 +49,13 @@ compose/.env.example
 | Variable | Description |
 |----------|-------------|
 | NGINX_PORT | Nginx HTTP port |
+| DEV_NGINX_PORT | Development Nginx HTTP port |
 | FASTAPI_PORT | FastAPI port |
 | REDIS_PORT | Redis port |
+| PORTAINER_PORT | Portainer HTTP port |
+| PROMETHEUS_PORT | Prometheus HTTP port |
+| GRAFANA_PORT | Grafana HTTP port |
+| UPTIME_KUMA_PORT | Uptime Kuma HTTP port |
 
 ---
 

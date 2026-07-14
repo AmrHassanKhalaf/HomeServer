@@ -1,11 +1,15 @@
 #!/bin/bash
 
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 echo "Starting Backup..."
 
-~/HomeServer/scripts/backup-db.sh
+"$SCRIPT_DIR/backup-db.sh"
 
-~/HomeServer/scripts/backup-configs.sh
+"$SCRIPT_DIR/backup-configs.sh"
 
-~/HomeServer/scripts/backup-volumes.sh
+"$SCRIPT_DIR/backup-volumes.sh"
 
 echo "Backup Finished Successfully"

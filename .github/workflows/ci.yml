@@ -21,14 +21,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Create Compose env file
+        run: cp compose/.env.example compose/.env
+
       - name: Validate Docker Compose
-        run: docker compose -f compose/docker-compose.yml config
+        run: docker compose config
 
       - name: Build FastAPI
-        run: docker build -t fastapi ./docker/fastapi
+        run: docker build -t fastapi ./apps/ai-service
 
       - name: Build React
-        run: docker build -t react /srv/apps/portfolio-web
+        run: docker build -t react ./apps/portfolio-web
 
       - name: Build Laravel
-        run: docker build -t laravel /srv/apps/portfolio-api
+        run: docker build -t laravel ./apps/portfolio-api
