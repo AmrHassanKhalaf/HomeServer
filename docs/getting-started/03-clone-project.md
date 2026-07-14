@@ -1,12 +1,22 @@
-# 📥 Clone HomeServer
+# Clone HomeServer
 
-## Goal
+This guide explains how to download HomeServer, configure the environment and prepare the project for the first startup.
 
-Download the HomeServer project and prepare it for deployment.
+| Difficulty | Beginner |
+|------------|----------|
+| Estimated Time | 5 minutes |
 
 ---
 
-## Clone Repository
+# Overview
+
+After installing Ubuntu and Docker, the next step is to download the HomeServer repository and prepare the project configuration.
+
+---
+
+# Clone the Repository
+
+Clone the latest stable version of HomeServer:
 
 ```bash
 git clone https://github.com/AmrHassanKhalaf/HomeServer.git
@@ -16,56 +26,90 @@ cd HomeServer
 
 ---
 
-## Verify Repository
+# Verify the Repository
+
+Confirm that the project was cloned successfully:
 
 ```bash
 tree -L 1
 ```
 
-Expected folders:
+Expected output:
 
 ```text
-apps/
 assets/
 compose/
 docker/
 docs/
 monitoring/
 scripts/
+README.md
 ```
 
 ---
 
-## Configure Environment
+# Configure the Environment
+
+Create the environment configuration file:
 
 ```bash
 cp compose/.env.example compose/.env
+```
 
+Open the file:
+
+```bash
 nano compose/.env
 ```
 
-Update:
+Update the required values.
 
-- MYSQL_DATABASE
-- MYSQL_USER
-- MYSQL_PASSWORD
-- MYSQL_ROOT_PASSWORD
+Example:
 
----
+```env
+PROJECT_NAME=homeserver
 
-## Tested Environment
+MYSQL_DATABASE=homeserver
+MYSQL_USER=homeserver
+MYSQL_PASSWORD=change_this_password
+MYSQL_ROOT_PASSWORD=change_this_root_password
 
-- Ubuntu 26.04 LTS
-- Git 2.53.0
-
----
-
-## Result
-
-HomeServer is ready to start.
+NGINX_PORT=80
+FASTAPI_PORT=8000
+REDIS_PORT=6379
+```
 
 ---
 
-## Next
+# Verify Docker Compose
 
-➡ 04-first-start.md
+Validate the configuration before starting the stack:
+
+```bash
+cd compose
+
+docker compose config
+```
+
+If no errors are displayed, the configuration is valid.
+
+---
+
+# Project Structure
+
+The repository is organized as follows:
+
+| Directory | Purpose |
+|-----------|---------|
+| assets | Images and diagrams |
+| compose | Docker Compose configuration |
+| docker | Docker and Nginx configuration |
+| docs | Project documentation |
+| monitoring | Prometheus configuration |
+| scripts | Utility scripts |
+
+---
+
+# Next Step
+
+Continue with **04 – First Start**.

@@ -1,85 +1,199 @@
-# ☁️ Cloudflare Tunnel
+# Configure Cloudflare Tunnel
 
-## Goal
+This guide explains how to connect HomeServer to the Internet securely using Cloudflare Tunnel.
 
-Expose HomeServer securely to the Internet without opening router ports.
-
----
-
-## Requirements
-
-- Cloudflare Account
-- Domain Name
-- HomeServer running
+| Difficulty | Intermediate |
+|------------|--------------|
+| Estimated Time | 15–20 minutes |
 
 ---
 
-## Install Cloudflared
+# Overview
 
-Follow the official Cloudflare installation guide.
+HomeServer uses Cloudflare Tunnel to securely expose services to the Internet without opening ports on your router.
+
+Benefits include:
+
+- No Port Forwarding
+- Free SSL Certificates
+- Secure HTTPS Connections
+- Easy DNS Management
+- Zero Trust Ready
 
 ---
 
-## Login
+# Prerequisites
+
+Before continuing, make sure you have:
+
+- A Cloudflare account
+- A domain managed by Cloudflare
+- HomeServer running successfully
+- Docker Compose working correctly
+
+---
+
+# Install Cloudflared
+
+Follow the official Cloudflare installation guide for your operating system.
+
+After installation, verify the version:
+
+```bash
+cloudflared --version
+```
+
+---
+
+# Authenticate
+
+Login to your Cloudflare account:
 
 ```bash
 cloudflared tunnel login
 ```
 
+A browser window will open.
+
+Authorize your domain.
+
 ---
 
-## Create Tunnel
+# Create a Tunnel
+
+Create a new tunnel:
 
 ```bash
 cloudflared tunnel create homeserver
 ```
 
+Cloudflare will generate:
+
+- Tunnel ID
+- Credentials file
+
+Keep both files.
+
 ---
 
-## Configure Tunnel
+# Configure DNS
 
-Create:
+Create DNS routes for your applications.
 
-~/.cloudflared/config.yml
+Example:
 
----
+```text
+portfolio.example.com
+api.example.com
+ai.example.com
+grafana.example.com
+```
 
-## Route DNS
+Use:
 
 ```bash
-cloudflared tunnel route dns homeserver your-domain.com
+cloudflared tunnel route dns homeserver portfolio.example.com
+
+cloudflared tunnel route dns homeserver api.example.com
+
+cloudflared tunnel route dns homeserver ai.example.com
 ```
 
 ---
 
-## Install Service
+# Configure Tunnel
+
+Create a configuration file:
+
+```yaml
+tunnel: <Tunnel-ID>
+
+credentials-file: ~/.cloudflared/<Tunnel-ID>.json
+
+ingress:
+  - hostname: portfolio.example.com
+    service: http://localhost:80
+
+  - hostname: api.example.com
+    service: http://localhost:80
+
+  - hostname: ai.example.com
+    service: http://localhost:80
+
+  - service: http_status:404
+```
+
+---
+
+# Start the Tunnel
+
+Run:
+
+```bash
+cloudflared tunnel run homeserver
+```
+
+Or install it as a system service:
 
 ```bash
 sudo cloudflared service install
 ```
 
+Then:
+
+```bash
+sudo systemctl enable cloudflared
+
+sudo systemctl start cloudflared
+```
+
 ---
 
-## Verification
+# Verify the Tunnel
+
+Check service status:
 
 ```bash
 systemctl status cloudflared
 ```
 
-Expected:
+Verify DNS:
 
+```bash
+nslookup portfolio.example.com
 ```
-Active: active (running)
+
+Open your domain in the browser.
+
+The HomeServer application should be accessible over HTTPS.
+
+---
+
+# Troubleshooting
+
+If the tunnel does not connect:
+
+- Verify your Cloudflare authentication.
+- Check the credentials file.
+- Verify DNS records.
+- Check:
+
+```bash
+journalctl -u cloudflared
 ```
 
 ---
 
-## Result
+# Verification Checklist
 
-Your HomeServer is securely accessible through Cloudflare Tunnel.
+- Tunnel is connected.
+- DNS records are active.
+- HTTPS is working.
+- Applications are publicly accessible.
+- No router ports are exposed.
 
 ---
 
-## Next
+# Next Step
 
-➡ docs/guides/nginx.md
+Continue with the Guides section to learn how each HomeServer service works.
